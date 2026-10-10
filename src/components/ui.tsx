@@ -4,21 +4,21 @@ import type { OrderStage } from "@/lib/format";
 import { stageLabel } from "@/lib/format";
 
 const buttonBase =
-  "inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-md font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600";
+  "inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-xl font-medium transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 active:scale-95";
 
 export const buttonStyles = {
-  primary: `${buttonBase} bg-blue-600 px-3.5 py-2 text-white shadow-sm hover:bg-blue-700`,
-  secondary: `${buttonBase} border border-slate-300 bg-white px-3.5 py-2 text-slate-700 shadow-sm hover:bg-slate-50`,
-  danger: `${buttonBase} bg-red-600 px-3.5 py-2 text-white shadow-sm hover:bg-red-700`,
-  small: `${buttonBase} border border-slate-300 bg-white px-2.5 py-1 text-xs text-slate-700 hover:bg-slate-50`,
-  icon: `${buttonBase} size-8 text-slate-500 hover:bg-slate-100 hover:text-slate-900`,
-  iconDanger: `${buttonBase} size-8 text-slate-500 hover:bg-red-50 hover:text-red-600`,
+  primary: `${buttonBase} bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-2 text-white shadow-md shadow-indigo-500/20 hover:shadow-lg hover:shadow-indigo-500/40 hover:-translate-y-0.5`,
+  secondary: `${buttonBase} border border-slate-200 bg-white/80 backdrop-blur-sm px-4 py-2 text-slate-700 shadow-sm hover:bg-slate-50 hover:border-slate-300 hover:-translate-y-0.5`,
+  danger: `${buttonBase} bg-gradient-to-r from-red-500 to-rose-600 px-4 py-2 text-white shadow-md shadow-red-500/20 hover:shadow-lg hover:shadow-red-500/40 hover:-translate-y-0.5`,
+  small: `${buttonBase} border border-slate-200 bg-white/80 backdrop-blur-sm px-3 py-1.5 text-xs text-slate-700 shadow-sm hover:bg-slate-50 hover:-translate-y-0.5`,
+  icon: `${buttonBase} size-9 text-slate-500 hover:bg-slate-100/80 hover:text-slate-900 rounded-lg`,
+  iconDanger: `${buttonBase} size-9 text-slate-500 hover:bg-red-50 hover:text-red-600 rounded-lg`,
 };
 
 export const inputStyles =
-  "block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 disabled:bg-slate-50";
+  "block w-full rounded-xl border border-slate-200 bg-white/50 backdrop-blur-sm px-3.5 py-2.5 text-sm text-slate-900 shadow-sm transition-all duration-300 placeholder:text-slate-400 focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-indigo-500/10 hover:border-slate-300 disabled:bg-slate-50";
 
-export const linkStyles = "font-medium text-blue-700 hover:text-blue-900 hover:underline";
+export const linkStyles = "font-medium text-indigo-600 transition-colors hover:text-purple-600 hover:underline";
 
 export function PageHeader({
   title,
@@ -69,20 +69,20 @@ export function Card({
 }) {
   return (
     <section
-      className={`overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm ${className}`}
+      className={`animate-fade-in-up overflow-hidden rounded-2xl border border-white/60 bg-white/70 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-0.5 ${className}`}
     >
       {(title || action) && (
-        <header className="flex items-start justify-between gap-4 border-b border-slate-200 px-5 py-4">
+        <header className="flex items-start justify-between gap-4 border-b border-slate-100/50 bg-white/40 px-6 py-5">
           <div>
-            <h2 className="font-semibold">{title}</h2>
+            <h2 className="font-semibold text-slate-900 text-lg tracking-tight">{title}</h2>
             {description && (
-              <p className="mt-0.5 text-xs text-slate-500">{description}</p>
+              <p className="mt-1 text-sm text-slate-500">{description}</p>
             )}
           </div>
           {action}
         </header>
       )}
-      <div className={flush ? "" : "p-5"}>{children}</div>
+      <div className={flush ? "" : "p-6"}>{children}</div>
     </section>
   );
 }
@@ -97,28 +97,28 @@ export function StatCard({
   hint?: ReactNode;
 }) {
   return (
-    <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-      <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+    <div className="animate-fade-in-up rounded-2xl border border-white/60 bg-white/70 backdrop-blur-md p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-0.5">
+      <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
         {label}
       </p>
-      <p className="mt-2 text-3xl font-semibold tabular-nums tracking-tight">
+      <p className="mt-3 text-4xl font-bold tabular-nums tracking-tight text-slate-900 bg-gradient-to-br from-slate-900 to-slate-600 bg-clip-text text-transparent">
         {value}
       </p>
-      {hint && <p className="mt-1 text-xs text-slate-500">{hint}</p>}
+      {hint && <p className="mt-2 text-sm text-slate-500 font-medium">{hint}</p>}
     </div>
   );
 }
 
 const stageStyles: Record<OrderStage, string> = {
-  open: "bg-amber-50 text-amber-700 ring-amber-600/20",
-  partial: "bg-blue-50 text-blue-700 ring-blue-600/20",
-  completed: "bg-emerald-50 text-emerald-700 ring-emerald-600/20",
+  open: "bg-amber-50 text-amber-700 ring-amber-600/30 shadow-[0_0_10px_rgba(245,158,11,0.2)]",
+  partial: "bg-indigo-50 text-indigo-700 ring-indigo-600/30 shadow-[0_0_10px_rgba(99,102,241,0.2)]",
+  completed: "bg-emerald-50 text-emerald-700 ring-emerald-600/30 shadow-[0_0_10px_rgba(16,185,129,0.2)]",
 };
 
 export function StageBadge({ stage }: { stage: OrderStage }) {
   return (
     <span
-      className={`inline-flex shrink-0 items-center whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-medium ring-1 ring-inset ${stageStyles[stage]}`}
+      className={`inline-flex shrink-0 items-center whitespace-nowrap rounded-full px-2.5 py-1 text-[11px] uppercase tracking-wider font-bold ring-1 ring-inset transition-all duration-300 hover:scale-105 ${stageStyles[stage]}`}
     >
       {stageLabel[stage]}
     </span>

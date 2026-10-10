@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full bg-slate-50 font-sans text-sm text-slate-900">
+      <body className="min-h-full font-sans text-sm text-slate-900">
         <TrackerProvider>
           <AppHeader />
           <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:py-8">

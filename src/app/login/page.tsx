@@ -14,12 +14,16 @@ export default function LoginPage() {
   );
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-12 sm:px-6 lg:px-8">
-      <div className="w-full max-w-md space-y-8 rounded-xl bg-white p-8 shadow-sm ring-1 ring-slate-900/5">
-        <div>
-          <h2 className="mt-2 text-center text-3xl font-bold tracking-tight text-slate-900">
-            Sign in to your account
+    <div className="flex min-h-screen items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
+      <div className="animate-fade-in-up w-full max-w-md space-y-8 rounded-3xl border border-white/60 bg-white/70 backdrop-blur-xl p-10 shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
+        <div className="text-center">
+          <div className="mx-auto grid size-12 place-items-center rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 text-lg font-bold tracking-wide text-white shadow-lg shadow-indigo-500/30 mb-6">
+            SR
+          </div>
+          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700">
+            Welcome back
           </h2>
+          <p className="mt-2 text-sm text-slate-500 font-medium">Please enter the master password</p>
         </div>
         
         <form action={formAction} className="mt-8 space-y-6">
