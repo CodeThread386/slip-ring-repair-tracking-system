@@ -4,21 +4,21 @@ import type { OrderStage } from "@/lib/format";
 import { stageLabel } from "@/lib/format";
 
 const buttonBase =
-  "inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-lg font-medium transition-all duration-200 disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 active:scale-[0.98]";
+  "inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-lg font-medium transition-all duration-200 disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 active:scale-[0.98]";
 
 export const buttonStyles = {
-  primary: `${buttonBase} bg-zinc-900 px-4 py-2 text-white hover:bg-zinc-800 shadow-sm`,
-  secondary: `${buttonBase} border border-zinc-200 bg-white px-4 py-2 text-zinc-900 shadow-sm hover:bg-zinc-50 hover:border-zinc-300`,
-  danger: `${buttonBase} bg-red-600 px-4 py-2 text-white hover:bg-red-700 shadow-sm`,
-  small: `${buttonBase} border border-zinc-200 bg-white px-3 py-1.5 text-xs text-zinc-900 shadow-sm hover:bg-zinc-50`,
-  icon: `${buttonBase} size-9 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 rounded-lg`,
-  iconDanger: `${buttonBase} size-9 text-zinc-500 hover:bg-red-50 hover:text-red-600 rounded-lg`,
+  primary: `${buttonBase} bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 shadow-sm shadow-blue-500/20`,
+  secondary: `${buttonBase} border border-slate-200 bg-white px-4 py-2 text-slate-700 shadow-sm hover:bg-slate-50 hover:border-slate-300`,
+  danger: `${buttonBase} bg-red-600 px-4 py-2 text-white hover:bg-red-700 shadow-sm shadow-red-500/20`,
+  small: `${buttonBase} border border-slate-200 bg-white px-3 py-1.5 text-xs text-slate-700 shadow-sm hover:bg-slate-50`,
+  icon: `${buttonBase} size-9 text-slate-500 hover:bg-slate-100 hover:text-slate-900 rounded-lg`,
+  iconDanger: `${buttonBase} size-9 text-slate-500 hover:bg-red-50 hover:text-red-600 rounded-lg`,
 };
 
 export const inputStyles =
-  "block w-full rounded-lg border border-zinc-200 bg-white px-3.5 py-2.5 text-sm text-zinc-900 shadow-sm transition-all duration-200 placeholder:text-zinc-400 focus:border-zinc-900 focus:outline-none focus:ring-1 focus:ring-zinc-900 hover:border-zinc-300 disabled:bg-zinc-50";
+  "block w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 shadow-sm transition-all duration-200 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 hover:border-slate-300 disabled:bg-slate-50";
 
-export const linkStyles = "font-medium text-zinc-900 transition-colors hover:text-zinc-600 hover:underline decoration-zinc-300 underline-offset-4";
+export const linkStyles = "font-medium text-blue-600 transition-colors hover:text-blue-700 hover:underline decoration-blue-300 underline-offset-4";
 
 export function PageHeader({
   title,
@@ -36,15 +36,15 @@ export function PageHeader({
       {back && (
         <Link
           href={back.href}
-          className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 hover:text-zinc-900 transition-colors"
+          className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors"
         >
           ← {back.label}
         </Link>
       )}
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div className="min-w-0">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900">{title}</h1>
-          {description && <p className="mt-2 text-base text-zinc-500">{description}</p>}
+          <h1 className="text-3xl font-bold tracking-tight text-slate-900">{title}</h1>
+          {description && <p className="mt-2 text-base text-slate-500">{description}</p>}
         </div>
         {actions && <div className="flex flex-wrap gap-2">{actions}</div>}
       </div>
@@ -69,14 +69,14 @@ export function Card({
 }) {
   return (
     <section
-      className={`animate-fade-in-up overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm ${className}`}
+      className={`animate-fade-in-up overflow-hidden rounded-xl border border-slate-200/60 bg-white shadow-[0_2px_10px_rgba(0,0,0,0.04)] transition-shadow duration-300 hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] ${className}`}
     >
       {(title || action) && (
-        <header className="flex items-start justify-between gap-4 border-b border-zinc-100 bg-white px-6 py-5">
+        <header className="flex items-start justify-between gap-4 border-b border-slate-100 bg-white px-6 py-5">
           <div>
-            <h2 className="font-semibold text-zinc-900 text-lg tracking-tight">{title}</h2>
+            <h2 className="font-semibold text-slate-900 text-lg tracking-tight">{title}</h2>
             {description && (
-              <p className="mt-1 text-sm text-zinc-500">{description}</p>
+              <p className="mt-1 text-sm text-slate-500">{description}</p>
             )}
           </div>
           {action}
@@ -97,28 +97,28 @@ export function StatCard({
   hint?: ReactNode;
 }) {
   return (
-    <div className="animate-fade-in-up rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
-      <p className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
+    <div className="animate-fade-in-up rounded-xl border border-slate-200/60 bg-white p-6 shadow-[0_2px_10px_rgba(0,0,0,0.04)] transition-shadow duration-300 hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)]">
+      <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
         {label}
       </p>
-      <p className="mt-2 text-4xl font-bold tabular-nums tracking-tight text-zinc-900">
+      <p className="mt-2 text-4xl font-bold tabular-nums tracking-tight text-slate-900">
         {value}
       </p>
-      {hint && <p className="mt-2 text-sm text-zinc-500">{hint}</p>}
+      {hint && <p className="mt-2 text-sm text-slate-500">{hint}</p>}
     </div>
   );
 }
 
 const stageStyles: Record<OrderStage, string> = {
-  open: "bg-zinc-100 text-zinc-700 ring-zinc-200",
-  partial: "bg-zinc-900 text-white ring-zinc-900",
-  completed: "bg-white text-zinc-900 ring-zinc-200",
+  open: "bg-slate-100 text-slate-700 ring-slate-200",
+  partial: "bg-blue-50 text-blue-700 ring-blue-200",
+  completed: "bg-emerald-50 text-emerald-700 ring-emerald-200",
 };
 
 export function StageBadge({ stage }: { stage: OrderStage }) {
   return (
     <span
-      className={`inline-flex shrink-0 items-center whitespace-nowrap rounded-md px-2 py-0.5 text-xs font-semibold ring-1 ring-inset ${stageStyles[stage]}`}
+      className={`inline-flex shrink-0 items-center whitespace-nowrap rounded-md px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider ring-1 ring-inset ${stageStyles[stage]}`}
     >
       {stageLabel[stage]}
     </span>

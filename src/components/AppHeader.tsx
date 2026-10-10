@@ -25,8 +25,8 @@ function NavLinks() {
         aria-current={active ? "page" : undefined}
         className={`whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
           active
-            ? "bg-zinc-900 text-white"
-            : "text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900"
+            ? "bg-blue-50 text-blue-700"
+            : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
         }`}
       >
         {label}
@@ -42,13 +42,13 @@ export function AppHeader() {
   if (pathname === '/login') return null;
 
   return (
-    <header className="sticky top-0 z-30 border-b border-zinc-200 bg-white">
+    <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-6 px-4 sm:px-6">
         <Link href="/" className="flex shrink-0 items-center gap-3">
-          <span className="grid size-8 place-items-center bg-black text-xs font-bold tracking-wide text-white">
+          <span className="grid size-8 place-items-center rounded bg-gradient-to-br from-blue-600 to-indigo-600 text-xs font-bold tracking-wide text-white shadow-sm">
             SR
           </span>
-          <span className="font-semibold tracking-tight text-zinc-900">Slip Ring Tracker</span>
+          <span className="font-semibold tracking-tight text-slate-900">Slip Ring Tracker</span>
         </Link>
         <nav className="hidden items-center gap-2 md:flex ml-4">
           <NavLinks />
@@ -73,7 +73,7 @@ export function AppHeader() {
           </button>
         </div>
       </div>
-      <nav className="flex flex-wrap gap-2 border-t border-zinc-100 bg-zinc-50/50 px-3 py-2 md:hidden">
+      <nav className="flex flex-wrap gap-2 border-t border-slate-100 bg-white/50 px-3 py-2 md:hidden">
         <NavLinks />
       </nav>
     </header>

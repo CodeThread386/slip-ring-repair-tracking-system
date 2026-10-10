@@ -2,7 +2,7 @@
 
 @theme inline {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --animate-fade-in-up: fade-in-up 0.4s ease-out forwards;
+  --animate-fade-in-up: fade-in-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes fade-in-up {
@@ -23,6 +23,9 @@
 body {
   font-feature-settings: "cv11", "ss01";
   overflow-x: hidden;
-  background-color: #fafafa;
+  background-color: #f8fafc;
+  background-image: radial-gradient(ellipse at top, #ffffff, transparent), radial-gradient(ellipse at bottom, #f1f5f9, transparent);
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
