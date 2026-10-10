@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ReceivingEntry {
+  id           Int      @id @default(autoincrement())
+  sno          Int
+  companyName  String?
+  slipRingType String
+  clientGpNo   String
+  clientGpDate DateTime
+  qtyReceived  Int
+  location     String
+  remarks      String?
+  isAdjustment Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  dueOverride  Int?
+
+  dispatches DispatchEntry[]
+}
+
+model DispatchEntry {
+  id               Int            @id @default(autoincrement())
+  receivingEntryId Int
+  receivingEntry   ReceivingEntry @relation(fields: [receivingEntryId], references: [id])
+  internalGpNo     String
+  dispatchDate     DateTime
+  dispatchQty      Int
+  dispatchTo       String
+  remarks          String?
+  createdAt        DateTime       @default(now())
+}

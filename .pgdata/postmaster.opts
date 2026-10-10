@@ -1,0 +1,1 @@
+/home/sarthak/slip-ring-tracker/node_modules/@embedded-postgres/linux-x64/native/bin/postgres "-D" "/home/sarthak/slip-ring-tracker/.pgdata" "-p" "5432"
