@@ -4,4 +4,6 @@ export const SEEDED_SLIP_RING_TYPES = [
   "ABB V2 Type",
   "LS Slip Ring",
   "ABB Centra Drum",
+  "SEC Drum",
+  "Elin Drum",
 ] as const;
