@@ -25,6 +25,7 @@ export function DispatchForm({ order, dispatch, onSaved, onCancel }: DispatchFor
   const [dispatchTo, setDispatchTo] = useState(
     dispatch?.dispatchTo ?? order.companyName ?? "",
   );
+  const [poNo, setPoNo] = useState(dispatch?.poNo ?? "");
   const [remarks, setRemarks] = useState(dispatch?.remarks ?? "");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -46,6 +47,7 @@ export function DispatchForm({ order, dispatch, onSaved, onCancel }: DispatchFor
             internalGpNo,
             dispatchDate,
             dispatchTo,
+            poNo,
             remarks,
             confirmOverDispatch,
           }),
@@ -133,6 +135,17 @@ export function DispatchForm({ order, dispatch, onSaved, onCancel }: DispatchFor
               required
               value={dispatchTo}
               onChange={(event) => setDispatchTo(event.target.value)}
+              className={inputStyles}
+            />
+          )}
+        </Field>
+        <Field label="P.O. no.">
+          {(id) => (
+            <input
+              id={id}
+              value={poNo}
+              onChange={(event) => setPoNo(event.target.value)}
+              placeholder="Optional"
               className={inputStyles}
             />
           )}

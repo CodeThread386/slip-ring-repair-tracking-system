@@ -3,6 +3,7 @@ export type DispatchInput = {
   dispatchDate: Date;
   dispatchQty: number;
   dispatchTo: string;
+  poNo: string | null;
   remarks: string | null;
 };
 
@@ -12,6 +13,7 @@ export function parseDispatchInput(
 ): { input: DispatchInput } | { error: string } {
   const internalGpNo = String(body.internalGpNo ?? "").trim();
   const dispatchTo = String(body.dispatchTo ?? "").trim();
+  const poNo = body.poNo ? String(body.poNo).trim() || null : null;
   const remarks = body.remarks ? String(body.remarks).trim() || null : null;
   const dispatchQty = Number(body.dispatchQty);
   const dispatchDate = body.dispatchDate
@@ -28,6 +30,6 @@ export function parseDispatchInput(
   }
 
   return {
-    input: { internalGpNo, dispatchDate, dispatchQty, dispatchTo, remarks },
+    input: { internalGpNo, dispatchDate, dispatchQty, dispatchTo, poNo, remarks },
   };
 }

@@ -207,6 +207,7 @@ export function OrderDetailView({ id }: { id: number }) {
                 }
               >
                 Internal gate pass {dispatch.internalGpNo}
+                {dispatch.poNo && <> · PO {dispatch.poNo}</>}
                 {dispatch.remarks && <span className="text-slate-500"> · {dispatch.remarks}</span>}
               </TimelineItem>
             ))}
@@ -246,6 +247,7 @@ export function OrderDetailView({ id }: { id: number }) {
             <Detail label="Slip ring type" value={order.slipRingType} />
             <Detail label="Client GP no." value={order.clientGpNo} />
             <Detail label="GP date" value={formatDate(order.clientGpDate)} />
+            <Detail label="L.R. no." value={order.lrNo || "—"} />
             <Detail label="Location" value={order.location} />
             <Detail label="Remarks" value={order.remarks || <span className="text-slate-400">None</span>} />
           </dl>

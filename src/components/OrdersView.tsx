@@ -42,6 +42,7 @@ function matchesSearch(order: Order, query: string) {
     order.companyName,
     order.slipRingType,
     order.clientGpNo,
+    order.lrNo,
     order.location,
     order.remarks,
     ...order.dispatches.flatMap((dispatch) => [dispatch.internalGpNo, dispatch.dispatchTo]),
@@ -63,6 +64,7 @@ function exportOrders(orders: Order[]) {
       "Company",
       "Slip ring type",
       "Client GP no.",
+      "L.R. no.",
       "Location",
       "Received",
       "Dispatched",
@@ -76,6 +78,7 @@ function exportOrders(orders: Order[]) {
       order.companyName,
       order.slipRingType,
       order.clientGpNo,
+      order.lrNo,
       order.location,
       order.qtyReceived,
       order.totalDispatched,
@@ -294,6 +297,7 @@ export function OrdersView() {
                     <th className="px-4 py-2.5 font-medium">Company</th>
                     <th className="px-4 py-2.5 font-medium">Slip ring type</th>
                     <th className="px-4 py-2.5 font-medium">Client GP</th>
+                    <th className="px-4 py-2.5 font-medium">L.R. no.</th>
                     <th className="w-44 px-4 py-2.5 font-medium">Dispatched</th>
                     <th className="px-4 py-2.5 font-medium">Status</th>
                     <th className="px-4 py-2.5">
@@ -333,6 +337,7 @@ export function OrdersView() {
                           <p>{order.clientGpNo}</p>
                           <p className="text-xs text-slate-500">{order.location}</p>
                         </td>
+                        <td className="whitespace-nowrap px-4 py-3">{order.lrNo || "—"}</td>
                         <td className="px-4 py-3">
                           <ProgressBar value={order.totalDispatched} max={order.qtyReceived} />
                           <p className="mt-1 text-xs tabular-nums text-slate-500">
@@ -365,6 +370,7 @@ export function OrdersView() {
                         </p>
                         <p className="text-xs text-slate-500">
                           {order.slipRingType} · GP {order.clientGpNo} ·{" "}
+                          {order.lrNo && <>LR {order.lrNo} · </>}
                           {formatDate(order.clientGpDate)}
                         </p>
                       </div>

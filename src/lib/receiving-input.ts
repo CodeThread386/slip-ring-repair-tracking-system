@@ -3,6 +3,7 @@ export type ReceivingInput = {
   slipRingType: string;
   clientGpNo: string;
   clientGpDate: Date;
+  lrNo: string | null;
   qtyReceived: number;
   location: string;
   remarks: string | null;
@@ -16,6 +17,7 @@ export function parseReceivingInput(
   const slipRingType = String(body.slipRingType ?? "").trim();
   const clientGpNo = String(body.clientGpNo ?? "").trim();
   const location = String(body.location ?? "").trim();
+  const lrNo = body.lrNo ? String(body.lrNo).trim() || null : null;
   const remarks = body.remarks ? String(body.remarks).trim() || null : null;
   const qtyReceived = Number(body.qtyReceived);
   const clientGpDate = body.clientGpDate
@@ -39,6 +41,7 @@ export function parseReceivingInput(
       slipRingType,
       clientGpNo,
       clientGpDate,
+      lrNo,
       qtyReceived,
       location,
       remarks,

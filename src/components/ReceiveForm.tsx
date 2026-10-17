@@ -23,6 +23,7 @@ export function ReceiveForm({ order, onSaved, onCancel }: ReceiveFormProps) {
   const [clientGpDate, setClientGpDate] = useState(
     order ? order.clientGpDate.slice(0, 10) : todayInputValue(),
   );
+  const [lrNo, setLrNo] = useState(order?.lrNo ?? "");
   const [location, setLocation] = useState(order?.location ?? "");
   const [remarks, setRemarks] = useState(order?.remarks ?? "");
   const [submitting, setSubmitting] = useState(false);
@@ -47,6 +48,7 @@ export function ReceiveForm({ order, onSaved, onCancel }: ReceiveFormProps) {
             qtyReceived: Number(qtyReceived),
             clientGpNo,
             clientGpDate,
+            lrNo,
             location,
             remarks,
           }),
@@ -156,6 +158,17 @@ export function ReceiveForm({ order, onSaved, onCancel }: ReceiveFormProps) {
               required
               value={clientGpDate}
               onChange={(event) => setClientGpDate(event.target.value)}
+              className={inputStyles}
+            />
+          )}
+        </Field>
+        <Field label="L.R. no.">
+          {(id) => (
+            <input
+              id={id}
+              value={lrNo}
+              onChange={(event) => setLrNo(event.target.value)}
+              placeholder="Optional"
               className={inputStyles}
             />
           )}

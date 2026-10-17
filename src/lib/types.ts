@@ -7,6 +7,7 @@ export type ReceivingWithComputed = {
   slipRingType: string;
   clientGpNo: string;
   clientGpDate: string;
+  lrNo: string | null;
   qtyReceived: number;
   location: string;
   remarks: string | null;
@@ -26,6 +27,7 @@ export type DispatchWithReceiving = {
   dispatchDate: string;
   dispatchQty: number;
   dispatchTo: string;
+  poNo: string | null;
   remarks: string | null;
   createdAt: string;
   receivingEntry: {
@@ -61,6 +63,7 @@ export type OrderDispatch = {
   dispatchDate: string;
   dispatchQty: number;
   dispatchTo: string;
+  poNo: string | null;
   remarks: string | null;
   createdAt: string;
 };

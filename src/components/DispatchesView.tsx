@@ -23,6 +23,7 @@ function matchesSearch({ order, dispatch }: DispatchRow, query: string) {
   const haystack = [
     dispatch.internalGpNo,
     dispatch.dispatchTo,
+    dispatch.poNo,
     dispatch.remarks,
     `#${order.sno}`,
     order.companyName,
@@ -49,6 +50,7 @@ function exportDispatches(rows: DispatchRow[]) {
       "Dispatched to",
       "Order no.",
       "Client GP no.",
+      "P.O. no.",
       "Remarks",
     ],
     rows.map(({ order, dispatch }) => [
@@ -60,6 +62,7 @@ function exportDispatches(rows: DispatchRow[]) {
       dispatch.dispatchTo,
       order.sno,
       order.clientGpNo,
+      dispatch.poNo,
       dispatch.remarks,
     ]),
   );
@@ -159,6 +162,7 @@ export function DispatchesView() {
                     <th className="px-4 py-2.5 text-right font-medium">Drums</th>
                     <th className="px-4 py-2.5 font-medium">Dispatched to</th>
                     <th className="px-4 py-2.5 font-medium">Order</th>
+                    <th className="px-4 py-2.5 font-medium">P.O. no.</th>
                     <th className="px-4 py-2.5 font-medium">Remarks</th>
                     <th className="px-4 py-2.5">
                       <span className="sr-only">Actions</span>
@@ -181,6 +185,7 @@ export function DispatchesView() {
                           #{order.sno}
                         </Link>
                       </td>
+                      <td className="whitespace-nowrap px-4 py-3">{dispatch.poNo || "—"}</td>
                       <td className="max-w-56 truncate px-4 py-3 text-slate-500">
                         {dispatch.remarks || "—"}
                       </td>
@@ -233,6 +238,7 @@ export function DispatchesView() {
                   <div className="mt-3 flex items-center justify-between">
                     <p className="text-xs text-slate-500">
                       Order <Link href={`/orders/${order.id}`} className={linkStyles}>#{order.sno}</Link>
+                      {dispatch.poNo && <> · PO {dispatch.poNo}</>}
                     </p>
                     <div className="flex justify-end gap-1">
                       <button
